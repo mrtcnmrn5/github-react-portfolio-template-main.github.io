@@ -8,6 +8,29 @@ import { FixedNavSpacer, ToggleSwitch } from "./globalStyledComponents";
 import Logo from "../images/logo.svg";
 
 export default function NavBar() {
+  const menu = [
+    {
+      text: "Home",
+      to: "Home",
+    },
+    {
+      text: "About me",
+      to: "About",
+    },
+    {
+      text: "Skills",
+      to: "Skills",
+    },
+    {
+      text: "Projects",
+      to: "Projects",
+    },
+    {
+      text: "Contact",
+      to: "Contact",
+    },
+  ];
+
   const { theme, isExpanded, closeExpanded, toggleExpanded } = useAppContext();
 
   return (
@@ -38,60 +61,18 @@ export default function NavBar() {
           />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav navbarScroll className="me-auto">
-              <Nav.Item>
-                <Link
-                  to={"Home"}
-                  spy={true}
-                  activeClass="active"
-                  className="nav-link"
-                  onClick={closeExpanded}
-                >
-                  Home
-                </Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Link
-                  to={"About"}
-                  spy={true}
-                  activeClass="active"
-                  className="nav-link"
-                  onClick={closeExpanded}
-                >
-                  About Me
-                </Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Link
-                  to={"Skills"}
-                  spy={true}
-                  activeClass="active"
-                  className="nav-link"
-                  onClick={closeExpanded}
-                >
-                  Skills
-                </Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Link
-                  to={"Projects"}
-                  spy={true}
-                  activeClass="active"
-                  className="nav-link"
-                  onClick={closeExpanded}
-                >
-                  Projects
-                </Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Link
-                  to={"Contact"}
-                  spy={true}
-                  activeClass="active"
-                  className="nav-link"
-                  onClick={closeExpanded}
-                >
-                  Contact
-                </Link>
+              <Nav.Item style={{ display: "flex" }}>
+                {menu.map((menuItem) => (
+                  <Link
+                    to={`${menuItem.to}`}
+                    spy={true}
+                    activeClass="active"
+                    className="nav-link"
+                    onClick={closeExpanded}
+                  >
+                    {menuItem.text}
+                  </Link>
+                ))}
               </Nav.Item>
             </Nav>
             <Nav>
